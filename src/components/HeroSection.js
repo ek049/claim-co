@@ -8,7 +8,7 @@ function HeroSection() {
     <div className='hero-container'>
       {/* <h1>Welcome to the<br></br>Claim Company</h1> */}
       <img src='\images\logo.png' alt='logo' height='300px;'></img>
-      <p>Call for reservations or book online below!</p>
+      <p><b>Call for reservations</b> or book online below!</p>
       <p>Dining Rooms now OPEN!</p>
       
       <div className='hero-btns'>
