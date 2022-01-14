@@ -1,0 +1,3 @@
+[submodule "crypto-dappy"] 
+  path = './crypto-dappy'
+  url = git://https://github.com/ek049/claim-co
