@@ -1,6 +1,7 @@
-import { mutate, query, tx } from '@onflow/fcl';
+// import { mutate, query, tx } from '@onflow/fcl';
+import { query } from '@onflow/fcl';
 import { useEffect, useReducer } from 'react'
-import { CREATE_FUSD_VAULT } from '../flow/create-fusd-vault.tx';
+// import { CREATE_FUSD_VAULT } from '../flow/create-fusd-vault.tx';
 import { GET_FUSD_BALANCE } from '../flow/get-fusd-balance.script';
 import { defaultReducer } from '../reducer/defaultReducer'
 
