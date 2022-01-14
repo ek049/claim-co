@@ -7,7 +7,7 @@
 
 .home,
 .services,
-.products,
+.NFT,
 .sign-up {
   display: flex;
   height: 90vh;
@@ -25,7 +25,7 @@
   font-size: 100px;
 }
 
-.products {
+.NFT {
   background-image: url('./images/img-1.jpg');
   background-position: center;
   background-size: fill;
@@ -41,4 +41,79 @@
   background-repeat: no-repeat;
   color: #fff;
   font-size: 100px;
+}
+
+.highlight {
+  color: yellow
+}
+
+.app__title {
+  font-family: "Monument Bold";
+  color: white;
+  font-size: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 0
+}
+
+.app__subtitle {
+  font-family: "Monument Light";
+  text-align: center;
+}
+
+.btn {
+  font-family: "Monument Bold";
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn-bg {
+  background: rgb(0, 0, 0);
+  padding: 0.5rem 1rem;
+  mix-blend-mode: screen; /* This makes the cutout text possible */
+  color: white;
+}
+
+.btn-bordered {
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.btn-light {
+  font-family: "Monument Bold" !important;
+}
+
+.btn:hover, btn-bg:hover {
+  transform: scale(1.05);
+}
+
+.btn-small {
+  font-size: .8rem;
+  text-align: left;
+}
+
+.btn-dappy {
+  width: 60%;
+  margin: 0 auto;
+  display: flex; 
+  justify-content: center;
+}
+
+.btn-icon {
+  font-size: 1.2rem; 
+  margin-right: .2rem
+}
+
+.rounded {
+  border-radius: 150px;
+}
+
+.wiggling:hover {
+  animation: tada;
+  animation-duration: 1s;
+}
+
+.login-page {
+  background-color: gray;
+  background-position: center;
+  background-size: fill;
+  background-repeat: no-repeat;
 }
