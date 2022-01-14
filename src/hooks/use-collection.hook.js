@@ -24,7 +24,7 @@ export default function useCollection(user) {
       }
     }
     checkCollection()
-  }, [])
+  })
 
   const createCollection = async () => {
     try {
