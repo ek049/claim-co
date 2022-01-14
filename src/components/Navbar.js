@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { NAV_ROUTES } from '../config/routes.config'
-import Wallet from './AccountDetails'
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
 import './Navbar.css';

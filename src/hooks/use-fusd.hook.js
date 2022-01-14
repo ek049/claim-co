@@ -31,7 +31,7 @@ export default function useFUSD(user) {
     }
   }
 
-  const createFUSDVault = async () => {
+  /* const createFUSDVault = async () => {
     dispatch({ type: 'PROCESSING' })
     try {
       let transaction = await mutate({
@@ -43,7 +43,7 @@ export default function useFUSD(user) {
       dispatch({ type: 'ERROR' })
       console.log(err)
     }
-  }
+  } */
 
   return {
     ...state,
