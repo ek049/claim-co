@@ -1,7 +1,6 @@
-// import { mutate, query, tx } from '@onflow/fcl';
-import { query } from '@onflow/fcl';
+import { mutate, query, tx } from '@onflow/fcl';
 import { useEffect, useReducer } from 'react'
-// import { CREATE_FUSD_VAULT } from '../flow/create-fusd-vault.tx';
+import { CREATE_FUSD_VAULT } from '../flow/create-fusd-vault.tx';
 import { GET_FUSD_BALANCE } from '../flow/get-fusd-balance.script';
 import { defaultReducer } from '../reducer/defaultReducer'
 
@@ -32,7 +31,7 @@ export default function useFUSD(user) {
     }
   }
 
-  /* const createFUSDVault = async () => {
+  const createFUSDVault = async () => {
     dispatch({ type: 'PROCESSING' })
     try {
       let transaction = await mutate({
@@ -44,10 +43,11 @@ export default function useFUSD(user) {
       dispatch({ type: 'ERROR' })
       console.log(err)
     }
-  } */
+  }
 
   return {
     ...state,
-    getFUSDBalance
+    getFUSDBalance,
+    createFUSDVault
   }
 }
