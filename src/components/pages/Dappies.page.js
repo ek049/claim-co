@@ -4,6 +4,7 @@ import useDappyTemplates from '../../hooks/use-dappy-templates.hook'
 import DappyList from '../DappyList'
 import Header from '../Header'
 import ErrorLoadingRenderer from '../ErrorLoadingRenderer'
+import './Home.page.css'
 
 export default function Dappies() {
   const { data: dappyTemplates, loading, error } = useDappyTemplates()

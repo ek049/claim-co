@@ -2,8 +2,10 @@ import { useEffect, useReducer } from 'react'
 import { userDappyReducer } from '../reducer/userDappyReducer'
 import DappyClass from '../utils/DappyClass'
 import { DEFAULT_DAPPIES } from '../config/dappies.config'
-import { query } from '@onflow/fcl'
+import { mutate, query, tx } from '@onflow/fcl'
 import { LIST_USER_DAPPIES } from '../flow/list-user-dappies.script'
+import { MINT_DAPPY } from '../flow/mint-dappy.tx'
+import { useTxs } from '../providers/TxProvider'
 
 export default function useUserDappies(user, collection, getFUSDBalance) {
   const [state, dispatch] = useReducer(userDappyReducer, {
@@ -11,6 +13,8 @@ export default function useUserDappies(user, collection, getFUSDBalance) {
     error: false,
     data: []
   })
+
+  const { addTx } = useTxs()
 
   useEffect(() => {
     const fetchUserDappies = async () => {
@@ -37,7 +41,19 @@ export default function useUserDappies(user, collection, getFUSDBalance) {
   }, [])
 
   const mintDappy = async (templateID, amount) => {
+    if(!collection) {
+      alert("You need to enable the collection first. Go to the Collection tab!")
+      return 
+    }
     try {
+      let res = await mutate({
+        cadence: MINT_DAPPY,
+        limit: 55,
+        args: (arg, t) => [arg(templateID, t.UInt32), arg(amount, t.UFix64)]
+      })
+      addTx(res)
+      await tx(res).onceSealed();
+      await getFUSDBalance();
       await addDappy(templateID)
     } catch (error) {
       console.log(error)
@@ -46,7 +62,12 @@ export default function useUserDappies(user, collection, getFUSDBalance) {
 
   const addDappy = async (templateID) => {
     try {
-      const dappy = DEFAULT_DAPPIES.find(d => d?.templateID === templateID)
+      let res = await query({
+        cadence: LIST_USER_DAPPIES,
+        args: (arg, t) => [arg(user?.addr, t.Address)]
+      })
+      const dappies = Object.values(res)
+      const dappy = dappies.find(d => d?.templateID === templateID)
       const newDappy = new DappyClass(dappy.templateID, dappy.dna, dappy.name)
       dispatch({ type: 'ADD', payload: newDappy })
     } catch (err) {

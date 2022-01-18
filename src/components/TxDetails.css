@@ -20,7 +20,7 @@
 
 .txs__list {
   position: fixed;
-  top: 1rem;
+  top: 50%;
   left: 1rem;
   z-index: 120;
 }

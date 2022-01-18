@@ -3,6 +3,7 @@ import Providers from '../../providers/Providers.comp';
 import Routes from '../Routes.comp'
 import { ROUTES } from '../../config/routes.config';
 import '../../App.css';
+import './Home.page.css'
 import NavbarNFT from '../NavbarNFT';
 
 function NFT() {
