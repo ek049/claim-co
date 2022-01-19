@@ -14,7 +14,7 @@ export default function HomeNFT() {
       />
       <img className="header-image"
         alt="Header"
-        onClick={() => history.push("/packs")}
+        onClick={() => history.push("/dappies")}
         src={`${process.env.PUBLIC_URL}/images/image2.png`}
       />
     </>

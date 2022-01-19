@@ -1,0 +1,41 @@
+.navbarNFT {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1rem;
+    padding-right: 0;
+    z-index: 100;
+    background: white;
+  }
+  
+  .navbarNFT__item {
+    margin: 0 1rem;
+  }
+  
+  .navbarNFT__item-last {
+    margin-right: 0;
+  }
+  
+  .navbarNFT__mobile * {
+    margin: .5rem 0;
+  }
+  
+  .navbarNFT__mobile__trigger {
+    display: block;
+    width: 10rem;
+    margin: 2rem auto;
+   
+  }
+  
+  @media (max-width: 700px) {
+    .navbarNTF {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 700px) {
+    .navbarNFT__mobile__trigger {
+      display: none;
+    }
+  }

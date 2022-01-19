@@ -1,17 +1,19 @@
 import React from 'react';
 import Providers from '../../providers/Providers.comp';
 import Routes from '../Routes.comp'
-import { ROUTES } from '../../config/routes.config';
+import { ROUTES_NFT } from '../../config/routes.nft.config';
 import '../../App.css';
 import './Home.page.css'
 import NavbarNFT from '../NavbarNFT';
+import Wallet from '../AccountDetails';
 
 function NFT() {
   return (
     <div className="login-page">
       <Providers>
+        <Wallet />
         <NavbarNFT />
-        <Routes routes={ROUTES} />
+        <Routes routes={ROUTES_NFT} />
       </Providers>
     </div>
   );

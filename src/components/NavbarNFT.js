@@ -1,15 +1,13 @@
 import React from 'react'
 import { useHistory } from "react-router-dom"
-
-import { NAV_ROUTES } from '../config/routes.config'
-import Wallet from './AccountDetails'
-import "./Navbar.css"
+import { NAV_ROUTES_NFT } from '../config/routes.nft.config'
+import "./navbarNFT.css"
 
 export default function NavbarNFT() {
   const history = useHistory()
 
   const NavItem = ({ route }) => (
-    <div className="navbar__item">
+    <div className="navbarNFT__item">
       <div className="btn" onClick={() => history.push(route.path)}>
         {route.name}
       </div>
@@ -18,8 +16,7 @@ export default function NavbarNFT() {
 
   return (
     <div className="navbarNFT">
-      <Wallet />
-      {NAV_ROUTES.map(item => <NavItem route={item} key={item.path} />)}
+      {NAV_ROUTES_NFT.map(item => <NavItem route={item} key={item.path} />)}
     </div>
   )
 }

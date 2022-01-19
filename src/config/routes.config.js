@@ -1,15 +1,15 @@
-import PackDetails from '../components/pages/PackDetails.page'
-import Collection from '../components/pages/Collection.page'
-import Dappies from '../components/pages/Dappies.page'
-import Packs from '../components/pages/Packs.page'
 import HomeNFT from '../components/pages/HomeNFT'
+import Home from '../components/pages/Home'
+//import Northbrook from '../components/pages/nbk.js'
+//import VernonHills from '../components/pages/vh'
 
 export const ROUTES = [
-  { name: "Home", path: "/homeNFT", component: HomeNFT, nav: true },
-  { name: "Motherlodes", path: "/dappies", component: Dappies, nav: true },
-  { name: "Collection", path: '/collection', component: Collection, nav: true },
-  { name: "Packs", path: '/packs', component: Packs, nav: true },
-  { name: "PackDetails", path: '/packs/:packID', component: PackDetails, nav: false }
+  { name: "Home", path: "/", component: Home, nav: true },
+  { name: "Northbrook", path: "/nbk", component: Home, nav: true },
+  { name: "Vernon Hills", path: "/vh", component: Home, nav: true },
+  { name: "Motherlode Challenge", path: "/ml", component: Home, nav: true },
+  { name: "Email Club", path: "/email-club", component: Home, nav: true },
+  { name: "NFT", path: '/NFT', component: HomeNFT, nav: true }
 ]
 
 export const NAV_ROUTES = ROUTES.filter(r => r.nav)
