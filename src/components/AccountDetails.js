@@ -11,15 +11,15 @@ export default function Wallet() {
   return (
     <div className="wallet__popup">
       <div className="wallet__item">
-        👛 {user?.addr}
+        Wallet Address: {user?.addr}
       </div>
       {!balance ?
         <div className="btn btn-small" onClick={() => createFUSDVault()}>
-          ⚠️ Enable FUSD
+          Enable FUSD!
         </div>
         :
         <div className="wallet__item">
-          💰 FUSD: {balance.slice(0, -6)} <a style={{ color: "white" }} href="https://youtu.be/q8vcEGe95js">(Get FUSD)</a>
+          Balance:{balance.slice(0, -6)} FUSD <a style={{ color: "red" }} href="https://youtu.be/q8vcEGe95js">(Get FUSD)</a>
         </div>
       }
       <div className="btn btn-small" onClick={() => logOut()}>👋 Logout</div>

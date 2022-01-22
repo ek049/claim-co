@@ -1,7 +1,6 @@
 import { useEffect, useReducer } from 'react'
 import { userDappyReducer } from '../reducer/userDappyReducer'
 import DappyClass from '../utils/DappyClass'
-import { DEFAULT_DAPPIES } from '../config/dappies.config'
 import { mutate, query, tx } from '@onflow/fcl'
 import { LIST_USER_DAPPIES } from '../flow/list-user-dappies.script'
 import { MINT_DAPPY } from '../flow/mint-dappy.tx'
@@ -77,7 +76,12 @@ export default function useUserDappies(user, collection, getFUSDBalance) {
 
   const batchAddDappies = async (dappies) => {
     try {
-      const allDappies = DEFAULT_DAPPIES
+      let res = await query({
+        cadence: LIST_USER_DAPPIES,
+        args: (arg, t) => [arg(user?.addr, t.Address)]
+      })
+
+      const allDappies = Object.values(res)
       const dappyToAdd = allDappies.filter(d => dappies.includes(d?.templateID))
       const newDappies = dappyToAdd.map(d => new DappyClass(d.templateID, d.dna, d.name))
       for (let index = 0; index < newDappies.length; index++) {

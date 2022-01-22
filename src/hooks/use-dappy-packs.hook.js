@@ -1,9 +1,13 @@
 import { useEffect, useReducer } from 'react'
 import { defaultReducer } from '../reducer/defaultReducer'
 import { useUser } from '../providers/UserProvider'
-
 import { Pack } from '../utils/PackClass'
-import { DEFAULT_PACKS } from '../config/packs.config'
+import { mutate, query, tx } from '@onflow/fcl'
+import { LIST_PACKS } from '../flow/list-packs.script'
+import { GET_PACK } from '../flow/get-packs.script'
+import { LIST_DAPPIES_IN_PACK } from '../flow/list-dappies-in-pack.script'
+import { MINT_DAPPIES_FROM_PACK } from '../flow/mint-dappies-from-pack.script'
+import { useTxs } from '../providers/TxProvider'
 
 export default function useDappyPacks() {
   const [state, dispatch] = useReducer(defaultReducer, {
@@ -11,13 +15,16 @@ export default function useDappyPacks() {
     error: false,
     data: []
   })
-  const { collection, batchAddDappies } = useUser()
+  const { collection, batchAddDappies, getFUSDBalance } = useUser()
+  const { addTx, runningTxs } = useTxs()
 
   useEffect(() => {
     const fetchPacks = async () => {
       dispatch({ type: 'PROCESSING' })
       try {
-        const res = DEFAULT_PACKS
+        const res = await query({
+          cadence: LIST_PACKS
+        })
         dispatch({ type: 'SUCCESS', payload: res })
       } catch (err) {
         dispatch({ type: 'ERROR' })
@@ -27,12 +34,18 @@ export default function useDappyPacks() {
   }, [])
 
   const fetchPackDetails = async (packID) => {
-    let res = DEFAULT_PACKS.find(p => p.familyID === packID)
+    let res = await query({
+      cadence: GET_PACK,
+      args: (arg, t) => [arg(packID, t.UInt32)]
+    })
     return new Pack(res?.familyID, res?.name, res?.price)
   }
 
   const fetchDappiesOfPack = async (packID) => {
-    let res = DEFAULT_PACKS.find(p => p.familyID === packID)?.templates
+    let res = await query({
+      cadence: LIST_DAPPIES_IN_PACK,
+      args: (arg, t) => [arg(packID, t.UInt32)]
+    })
     return res
   }
 
@@ -44,6 +57,11 @@ export default function useDappyPacks() {
       return
     }
 
+    if (runningTxs) {
+      alert("Transactions are still running. Please wait...")
+      return
+    }
+
     var dappiesToMint = []
 
     for (let index = 0; index < dappies.length; index++) {
@@ -52,7 +70,16 @@ export default function useDappyPacks() {
       dappiesToMint.push(dappies[randomNumber])
     }
 
-    batchAddDappies(dappiesToMint)
+    let packNum = parseInt(packID.replace("Pack", ""))
+    let res = await mutate({
+      cadence: MINT_DAPPIES_FROM_PACK,
+      limit: 300,
+      args: (arg, t) => [arg(packNum, t.UInt32), arg(dappiesToMint, t.Array(t.UInt32)), arg(amount, t.UFix64)]
+    })
+    addTx(res);
+    await tx(res).onceSealed();
+    await getFUSDBalance();
+    batchAddDappies(dappiesToMint);
   }
 
 

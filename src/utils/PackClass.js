@@ -25,6 +25,6 @@ export class Pack {
   }
 
   get image() {
-    return `${process.env.PUBLIC_URL}/assets/${this.id}.png`
+    return `${process.env.PUBLIC_URL}/images/${this.id}.png`
   }
 }

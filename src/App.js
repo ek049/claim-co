@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from './components/Navbar';
-import './App.css';
 import Home from './components/pages/Home';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NFT from './components/pages/NFT';
+import comingSoon from './components/pages/comingSoon.page';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
@@ -12,12 +12,12 @@ function App() {
         <Navbar />
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/menu' component={Home} />
-          <Route path='/nbk' component={Home} />
-          <Route path='/vh' component={Home} />
+          <Route path='/nbk' component={comingSoon} />
+          <Route path='/vh' component={comingSoon} />
           <Route path='/NFT' component={NFT} />
-          <Route path='/challenge' component={Home} />
-          <Route path='/email-club' component={Home} />
+          <Route path='/ml' component={comingSoon} />
+          <Route path='/email-club' component={comingSoon} />
+          <Route path='/contact-us' component={comingSoon} />
         </Switch>
       </Router>
     </>

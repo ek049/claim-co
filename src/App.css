@@ -5,61 +5,6 @@
   font-family: 'Mate SC', serif;
 }
 
-.home,
-.services,
-.NFT,
-.sign-up {
-  display: flex;
-  height: 90vh;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-}
-
-.services {
-  background-image: url('./images/img-2.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.NFT {
-  background-image: url('./images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.sign-up {
-  background-image: url('./images/img-8.jpg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  color: #fff;
-  font-size: 100px;
-}
-
-.highlight {
-  color: yellow
-}
-
-.app__title {
-  font-family: "Monument Bold";
-  color: white;
-  font-size: 3.5rem;
-  margin-top: 0;
-  margin-bottom: 0
-}
-
-.app__subtitle {
-  font-family: "Monument Light";
-  text-align: center;
-}
-
 .btn {
   font-family: "Monument Bold";
   cursor: pointer;
@@ -116,4 +61,57 @@
   background-position: center;
   background-size: fill;
   background-repeat: no-repeat;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  overflow-x: hidden;
+  font-family: "Acumin Regular";
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.app {
+  text-align: center;
+}
+
+.app__title {
+  font-family: "Monument Bold";
+  color: white;
+  font-size: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.app__subtitle {
+  font-family: "Monument Light";
+}
+
+.highlight {
+  color: yellow;
+  display: inline-block;
+}
+
+.break {
+  color: yellow;
+  word-break: break-all;
+  color: red !important;
+}
+
+@media (min-width: 700px) {
+  .mobile_only {
+    display: none;
+  }
 }

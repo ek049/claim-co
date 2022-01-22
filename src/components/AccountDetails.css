@@ -2,6 +2,7 @@
   position: absolute;
   left: 1rem;
   top: 5rem;
+  z-index: 9;
 }
 
 .wallet__item {

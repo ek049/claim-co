@@ -27,7 +27,7 @@ export default function PackDetails() {
 
   return (
     <div className="packdetails__wrapper">
-      <img className="pack__img" src={`${process.env.PUBLIC_URL}/assets/${packID}.png`} alt='Pack' />
+      <img className="pack__img" src={`${process.env.PUBLIC_URL}/images/${packID}.png`} alt='Pack' />
       <div className="pack__content">
         <h3 className="app__title">{pack?.name}</h3>
         <div
